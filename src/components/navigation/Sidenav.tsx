@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTheme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import List from '@material-ui/core/List'
-// import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
-// import Divider from '@material-ui/core/Divider'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-// components
-// import CustomToolTip from '../tooltip'
 import PageDrawer, { ToggleButton } from '../page-drawer'
 
 // styles
@@ -29,6 +25,7 @@ const SideNav = (props: {
   open: boolean
   setOpen(arg: boolean): void
 }) => {
+  const [pathName, setPathName] = useState<null | string>(null)
   const { classes, open, setOpen } = props
   const isSmallerThan768px = useMediaQuery('(max-width:768px)')
   const theme = useTheme()
@@ -38,9 +35,9 @@ const SideNav = (props: {
     location: { pathname },
     push
   } = useHistory()
-  if (['/auth/awaiting-approval'].includes(history.location.pathname)) {
-    return null
-  }
+  // useEffect(() => {
+  //   setPathName(pathname)
+  // }, [pathname])
 
   const renderMenuItems = (props: {
     path: string
@@ -56,9 +53,10 @@ const SideNav = (props: {
             setOpen(false)
           }
           history.push(`/${path}`)
+          setPathName(`/${path}`)
         }}
         key={title}
-        className={`${pathname === `/${path}` ? 'active' : ''}`}
+        className={`${pathName === `/${path}` ? 'active' : ''}`}
       >
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={title} />
@@ -113,15 +111,6 @@ const SideNav = (props: {
             )
           )} */}
         </List>
-        {/* <Divider /> */}
-        {/* <List className={sideNavClasses.menuItems}>
-          <ListItem button className="logout">
-            <ListItemIcon>
-              <LogoutIcon />
-            </ListItemIcon>
-            <ListItemText primary="Log out" />
-          </ListItem>
-        </List> */}
       </PageDrawer>
     </Wrapper>
   )
