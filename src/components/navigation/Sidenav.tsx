@@ -22,7 +22,7 @@ import { ReactComponent as Briefcase } from '../../assets/briefcase-icon.svg'
 import { ReactComponent as Company } from '../../assets/npm-icon.svg'
 import { ReactComponent as Account } from '../../assets/person-icon.svg'
 // import { ReactComponent as TestLogo } from '../../assets/test_logo.svg'
-import TestLogo from '../../assets/test_logo.svg'
+import TestLogo from '../../assets/test_logo.png'
 
 const SideNav = (props: {
   classes: any
@@ -78,11 +78,7 @@ const SideNav = (props: {
         <Logo>
           <img src={TestLogo} alt="Test Logo" width="100px" />
         </Logo>
-        <List
-          className={sideNavClasses.menuItems}
-          // onMouseEnter={() => setOpen(true)}
-          // onMouseLeave={() => setOpen(false)}
-        >
+        <List className={sideNavClasses.menuItems}>
           {renderMenuItems({
             path: '',
             icon: <Dashboard />,

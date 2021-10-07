@@ -9,12 +9,12 @@ export const SideNavWrapper = styled.div`
   justify-content: center;
   display: flex;
 
-  .asm-logo {
+  /* .asm-logo {
     padding: 0 40px;
     path {
       fill: var(--white);
     }
-  }
+  } */
 `
 
 export const NavItemWrapper = styled(List)`
@@ -112,13 +112,14 @@ export const TopNavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  min-height: 60px;
   padding: 12px 40px;
   color: var(--primary-blue);
   position: sticky;
   top: 0;
   background: white;
   z-index: 2;
+  border-bottom: 1px solid #ececec;
 
   @media (max-width: 768px) {
     display: block;
@@ -128,13 +129,6 @@ export const TopNavWrapper = styled.div`
 
   @media (max-width: 550px) {
     padding: 12px 16px;
-  }
-
-  .asm-logo {
-    @media (max-width: 768px) {
-      display: flex;
-      justify-content: center;
-    }
   }
 
   .MuiBadge-badge {

@@ -1,13 +1,13 @@
 import './App.css'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { BrowserRouter as Switch, Route } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-// import {  } from 'react-router'
-// import { Provider } from 'react-redux'
-// import store from './store'
 import AppLayout from './components/app-layout'
 import { fetchGigs } from './actions/gigsAction'
-import { GigsState, Error } from './interfaces'
+import { GigsState, Error, Routes } from './interfaces'
+
+import routes from './routes'
 
 function App({ gigs, fetchGigs }: any) {
   let history = useHistory()
@@ -19,10 +19,20 @@ function App({ gigs, fetchGigs }: any) {
   }, [])
   useEffect(() => {
     console.log(gigs)
-  }, [gigs.loading])
+  }, [gigs])
   return (
     // <Provider store={store}>
-    <AppLayout history={history} />
+    <AppLayout history={history}>
+      {routes.map(({ name, path, component: Component }: Routes) => (
+        <Route
+          key={name}
+          path={`/${path}`}
+          // exact={route.exact}
+          // name={route.name}
+          render={(props) => <Component {...props} gigs={gigs} />}
+        />
+      ))}
+    </AppLayout>
     // </Provider>
   )
 }

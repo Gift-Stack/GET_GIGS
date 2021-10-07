@@ -2,11 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
 
 const drawerWidth = 240
-interface StylesTypes {
-  isSmallerThan768px: boolean
-  theme: any
-}
-const useStyles = makeStyles((props: StylesTypes) => ({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
     '& .MuiDrawer-paperAnchorDockedLeft': {
@@ -50,19 +46,6 @@ const useStyles = makeStyles((props: StylesTypes) => ({
         easing: props.theme.transitions.easing.sharp,
         duration: props.theme.transitions.duration.enteringScreen
       })
-    // transition: (props: {
-    //   theme: {
-    //     transitions: {
-    //       create(arg1: string, arg2: { easing: string; duration: string }): void
-    //       easing: { sharp: string }
-    //       duration: { enteringScreen: string }
-    //     }
-    //   }
-    // }) =>
-    //   props.theme.transitions.create('width', {
-    //     easing: props.theme.transitions.easing.sharp,
-    //     duration: props.theme.transitions.duration.enteringScreen
-    //   })
   },
   drawerClose: {
     transition: (props: { theme: any }) =>
@@ -72,7 +55,7 @@ const useStyles = makeStyles((props: StylesTypes) => ({
       }),
     overflowX: 'hidden',
     width: '84px !important'
-    // [props.theme.breakpoints.up('sm')]: {
+    // [(props: {theme:any}) => props.theme.breakpoints.up('sm')]: {
     //   width: ({ theme }: any) => theme.spacing(9) + 1
     // }
   },
@@ -89,7 +72,8 @@ const useStyles = makeStyles((props: StylesTypes) => ({
       marginTop: '-4px',
 
       '& path': {
-        fill: '#000000'
+        fill: '#000000',
+        opacity: 0.5
       },
 
       '& svg': {
@@ -98,7 +82,8 @@ const useStyles = makeStyles((props: StylesTypes) => ({
       }
     },
     '& .MuiListItemText-root': {
-      color: '#000000',
+      color: '#514C5D',
+      opacity: 0.5,
       margin: 0,
       marginLeft: '14px',
       cursor: 'pointer'
@@ -107,13 +92,15 @@ const useStyles = makeStyles((props: StylesTypes) => ({
       '&:hover': {
         background: 'none',
         '& .MuiListItemText-root': {
-          color: 'orange'
+          color: 'orange',
+          opacity: 1
         },
         '& svg': {
           color: 'orange',
           fill: 'orange',
           '& path': {
-            fill: 'orange'
+            fill: 'orange',
+            opacity: 1
           }
         }
       }
@@ -121,18 +108,20 @@ const useStyles = makeStyles((props: StylesTypes) => ({
     '& .active': {
       padding: '0 auto',
       '& .MuiListItemText-root': {
-        color: 'orange'
+        color: 'orange',
+        opacity: 1
       },
       '& svg': {
         color: 'orange',
         fill: 'orange',
         '& path': {
-          fill: 'orange'
+          fill: 'orange',
+          opacity: 1
         }
       }
     }
   }
-}))
+})
 
 export const Wrapper = styled.div`
   .MuiDrawer-paperAnchorDockedLeft {
@@ -142,9 +131,9 @@ export const Wrapper = styled.div`
 `
 export const Logo = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin: 25px 0px;
+  margin: 25px 0px 25px 30px;
 `
 
 export default useStyles
