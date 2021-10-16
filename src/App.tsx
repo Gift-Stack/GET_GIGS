@@ -1,21 +1,20 @@
-import './App.css'
-import { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { BrowserRouter as Switch, Route } from 'react-router-dom'
-import { useHistory } from 'react-router-dom'
-import AppLayout from './components/app-layout'
-import { fetchGigs } from './actions/gigsAction'
-import { Routes } from './interfaces'
+import "./App.css";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { useHistory, Route } from "react-router-dom";
+import AppLayout from "./components/app-layout";
+import { fetchGigs } from "./actions/gigsAction";
+import { Routes } from "./interfaces";
 
-import routes from './routes'
+import routes from "./routes";
 
 function App({ gigs, fetchGigs }: any) {
-  let history = useHistory()
+  let history = useHistory();
 
   useEffect(() => {
-    fetchGigs()
+    fetchGigs();
     // eslint-disable-next-line
-  }, [])
+  }, []);
 
   return (
     <AppLayout history={history}>
@@ -27,9 +26,9 @@ function App({ gigs, fetchGigs }: any) {
         />
       ))}
     </AppLayout>
-  )
+  );
 }
 const mapStateToProps = (state: any) => ({
-  gigs: state.gigs
-})
-export default connect(mapStateToProps, { fetchGigs })(App)
+  gigs: state.gigs,
+});
+export default connect(mapStateToProps, { fetchGigs })(App);

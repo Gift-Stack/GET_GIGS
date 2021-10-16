@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Divider, useMediaQuery } from "@material-ui/core";
 
 // style
-import { GigsWrapper, Table } from "./styles";
+import { GigsWrapper } from "./styles";
 import TableComponent from "./components/Table";
 import AddGigComponent from "./components/AddGig";
 
