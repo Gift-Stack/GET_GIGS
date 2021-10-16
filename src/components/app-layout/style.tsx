@@ -15,7 +15,8 @@ export const AppLayoutWrapper = styled(Grid)`
 
 export const AppLayoutContentWrapper = styled(Grid)`
   display: flex;
-  padding: 18px 32px;
+  padding: ${(props: AppLayoutContentWrapperProps) =>
+    props.smallerThan768px ? '18px' : '18px 32px'};
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   background: ${(props: AppLayoutContentWrapperProps) =>
@@ -26,5 +27,5 @@ export const AppLayoutContentWrapper = styled(Grid)`
   flex-direction: column;
   overflow-x: hidden;
   opacity: ${(props: AppLayoutContentWrapperProps) =>
-    props.smallerThan768px ? '0.3' : '1'};
+    props.smallerThan768px ? props.open && '0.3' : '1'};
 `

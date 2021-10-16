@@ -25,7 +25,6 @@ const SideNav = (props: {
   open: boolean
   setOpen(arg: boolean): void
 }) => {
-  const [pathName, setPathName] = useState<null | string>(null)
   const { classes, open, setOpen } = props
   const isSmallerThan768px = useMediaQuery('(max-width:768px)')
   const theme = useTheme()
@@ -35,9 +34,7 @@ const SideNav = (props: {
     location: { pathname },
     push
   } = useHistory()
-  // useEffect(() => {
-  //   setPathName(pathname)
-  // }, [pathname])
+  const [pathName, setPathName] = useState<string>(pathname)
 
   const renderMenuItems = (props: {
     path: string
@@ -97,19 +94,6 @@ const SideNav = (props: {
             icon: <Account />,
             title: 'Account'
           })}
-          {/* {navigationModel.map((props) =>
-            open ? (
-              renderMenuItems(props)
-            ) : (
-              <CustomToolTip
-                title={props.title}
-                placement="right"
-                key={props.title}
-              >
-                {renderMenuItems(props)}
-              </CustomToolTip>
-            )
-          )} */}
         </List>
       </PageDrawer>
     </Wrapper>

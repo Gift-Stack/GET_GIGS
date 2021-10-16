@@ -7,6 +7,10 @@ export const GigsWrapper = styled.div`
 export const Table = styled.div`
   border-collapse: collapse;
   width: 100%;
+  font-size: min(4vw, 14px, 1rem);
+  overflow: auto;
+  white-space: nowrap;
+  /* font-size: clamp(14px, 7vw, 0.2em); */
   td,
   th {
     text-align: left;
@@ -66,19 +70,37 @@ export const AddGigWrapper = styled.div`
   label {
     color: #565d74;
     opacity: 0.8;
+    margin-bottom: 10px;
   }
   .custom-input {
     border-radius: 10px;
-    min-width: 300px;
+    min-width: 200px;
+    width: 100%;
+    height: 50px !important;
     &:focus {
       border-color: orange !important;
       outline: orange;
     }
   }
-  label.Mui-focused {
+  /* label.Mui-focused {
     color: 'green';
     border-color: orange !important;
-  }
+  } */
+  /* .MuiInputBase-root {
+    border: 2px solid rgba(0, 0, 0, 0.23);
+    outline: 0;
+    box-shadow: none;
+  } */
+  /* .Mui-focused {
+    border-color: orange; */
+  /* border-width: 2px; */
+  /* } */
+  /* .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutlne { */
+  /* .MuiOutlinedInput-notchedOutlne { */
+  /* border-color: orange;
+    border-width: 2px; */
+  /* border: none;
+  } */
   li {
     color: orange;
     margin-bottom: 20px;

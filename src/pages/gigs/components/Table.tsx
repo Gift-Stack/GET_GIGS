@@ -1,6 +1,18 @@
+import Checkbox from '@material-ui/core/Checkbox'
+import { makeStyles } from '@material-ui/styles'
 import { Table } from '../styles'
 
+const useStyles = makeStyles({
+  checkbox: {
+    // color: 'rgba(251, 179, 11,0.8)',
+    '&.Mui-checked': {
+      color: 'rgba(251, 179, 11,0.6)'
+    }
+  }
+})
+
 const TableComponent = ({ data }: any) => {
+  const classes = useStyles()
   return (
     <Table>
       <tr>
@@ -16,7 +28,12 @@ const TableComponent = ({ data }: any) => {
         <>
           <tr>
             <td>
-              <input type="checkbox" name="check" />
+              <Checkbox
+                {...{
+                  inputProps: { 'aria-label': 'Checkbox demo', name: 'checked' }
+                }}
+                className={classes.checkbox}
+              />
             </td>
             <td>Product Design</td>
             <td>{gig?.company?.name}</td>
