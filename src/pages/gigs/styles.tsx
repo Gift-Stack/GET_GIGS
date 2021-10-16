@@ -24,6 +24,8 @@ export const Table = styled.div`
     opacity: 0.8;
     font-size: smaller;
     padding-top: 30px;
+    text-align: ${({ smallerThan768px }: TableTypes) =>
+      smallerThan768px && "center"};
   }
   tr th:last-child {
     width: 150px;
