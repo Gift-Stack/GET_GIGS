@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
+import { Button, Divider, useMediaQuery } from "@material-ui/core";
 
 // style
 import { GigsWrapper, Table } from "./styles";
@@ -9,7 +8,7 @@ import AddGigComponent from "./components/AddGig";
 
 const Gigs = ({ gigs }: any) => {
   const [activeComponent, setActiveComponent] = useState("gigs");
-
+  const smallerThan768px = useMediaQuery("(max-width:768px)");
   const { gigs: data } = gigs;
   return (
     <GigsWrapper>
@@ -44,7 +43,7 @@ const Gigs = ({ gigs }: any) => {
             href="#!"
             style={{
               borderBottom: "2.5px solid #FBB30B",
-              minWidth: 200,
+              minWidth: smallerThan768px ? 0 : 200,
               padding: "15px 10px",
               color: "initial",
               textDecoration: "none",
@@ -56,7 +55,7 @@ const Gigs = ({ gigs }: any) => {
             href="#!"
             style={{
               // borderBottom: '2.5px solid #FBB30B',
-              minWidth: 200,
+              minWidth: smallerThan768px ? 0 : 200,
               padding: "15px 10px",
               color: "initial",
               textDecoration: "none",
@@ -68,7 +67,7 @@ const Gigs = ({ gigs }: any) => {
             href="#!"
             style={{
               // borderBottom: '2.5px solid #FBB30B',
-              minWidth: 200,
+              minWidth: smallerThan768px ? 0 : 200,
               padding: "15px 10px",
               color: "initial",
               textDecoration: "none",
@@ -79,7 +78,9 @@ const Gigs = ({ gigs }: any) => {
         </div>
       )}
       <Divider style={{ margin: "0 -70px" }} />
-      {activeComponent === "gigs" && <TableComponent {...{ data }} />}
+      {activeComponent === "gigs" && (
+        <TableComponent {...{ data, smallerThan768px }} />
+      )}
       {activeComponent === "add-gig" && (
         <AddGigComponent {...{ activeComponent, setActiveComponent }} />
       )}

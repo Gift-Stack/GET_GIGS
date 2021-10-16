@@ -1,20 +1,19 @@
-import Checkbox from '@material-ui/core/Checkbox'
-import { makeStyles } from '@material-ui/styles'
-import { Table } from '../styles'
+import Checkbox from "@material-ui/core/Checkbox";
+import { makeStyles } from "@material-ui/styles";
+import { Table } from "../styles";
 
 const useStyles = makeStyles({
   checkbox: {
-    // color: 'rgba(251, 179, 11,0.8)',
-    '&.Mui-checked': {
-      color: 'rgba(251, 179, 11,0.6)'
-    }
-  }
-})
+    "&.Mui-checked": {
+      color: "rgba(251, 179, 11,0.6)",
+    },
+  },
+});
 
-const TableComponent = ({ data }: any) => {
-  const classes = useStyles()
+const TableComponent = ({ data, smallerThan768px }: any) => {
+  const classes = useStyles();
   return (
-    <Table>
+    <Table smallerThan768px={smallerThan768px}>
       <tr>
         <th></th>
         <th>Role</th>
@@ -30,7 +29,10 @@ const TableComponent = ({ data }: any) => {
             <td>
               <Checkbox
                 {...{
-                  inputProps: { 'aria-label': 'Checkbox demo', name: 'checked' }
+                  inputProps: {
+                    "aria-label": "Checkbox demo",
+                    name: "checked",
+                  },
                 }}
                 className={classes.checkbox}
               />
@@ -47,7 +49,7 @@ const TableComponent = ({ data }: any) => {
         </>
       ))}
     </Table>
-  )
-}
+  );
+};
 
-export default TableComponent
+export default TableComponent;

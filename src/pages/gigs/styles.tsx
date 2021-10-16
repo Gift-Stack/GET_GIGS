@@ -1,16 +1,19 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+
+interface TableTypes {
+  smallerThan768px: any;
+}
 
 export const GigsWrapper = styled.div`
   font-family: Helvetica;
   padding: 0 40px;
-`
+`;
 export const Table = styled.div`
   border-collapse: collapse;
-  width: 100%;
+  min-width: 100%;
   font-size: min(4vw, 14px, 1rem);
   overflow: auto;
   white-space: nowrap;
-  /* font-size: clamp(14px, 7vw, 0.2em); */
   td,
   th {
     text-align: left;
@@ -40,7 +43,8 @@ export const Table = styled.div`
     border-radius: 15px;
   }
   tr {
-    display: flex;
+    display: ${({ smallerThan768px }: TableTypes) =>
+      !smallerThan768px && "flex"};
     align-items: center;
     justify-content: space-between;
   }
@@ -49,7 +53,7 @@ export const Table = styled.div`
     border: none !important;
     background: none !important;
   }
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     height: 20px;
     width: 20px;
     border: 1px solid #e4e4e4;
@@ -64,7 +68,7 @@ export const Table = styled.div`
     height: 45px;
     cursor: pointer;
   }
-`
+`;
 
 export const AddGigWrapper = styled.div`
   label {
@@ -82,28 +86,9 @@ export const AddGigWrapper = styled.div`
       outline: orange;
     }
   }
-  /* label.Mui-focused {
-    color: 'green';
-    border-color: orange !important;
-  } */
-  /* .MuiInputBase-root {
-    border: 2px solid rgba(0, 0, 0, 0.23);
-    outline: 0;
-    box-shadow: none;
-  } */
-  /* .Mui-focused {
-    border-color: orange; */
-  /* border-width: 2px; */
-  /* } */
-  /* .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutlne { */
-  /* .MuiOutlinedInput-notchedOutlne { */
-  /* border-color: orange;
-    border-width: 2px; */
-  /* border: none;
-  } */
   li {
     color: orange;
     margin-bottom: 20px;
     opacity: 0.8;
   }
-`
+`;
